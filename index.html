@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Políticas de Gestión de Espacio en Disco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .table-color-0 { background-color: #f8d7da; }
+        .table-color-1 { background-color: #d1ecf1; }
+        .table-color-2 { background-color: #d4edda; }
+        .table-color-3 { background-color: #fff3cd; }
+        .table-color-4 { background-color: #d6d8db; }
+        .table-color-5 { background-color: #f1f1f1; }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Visualizador de Políticas de Gestión de Espacio en Disco</h1>
+        
+        <div class="row mb-3">
+            <div class="col">
+                <label for="diskSize" class="form-label">Tamaño del disco:</label>
+                <input type="number" id="diskSize" class="form-control" value="200">
+            </div>
+            <div class="col">
+                <label for="initialPosition" class="form-label">Posición inicial:</label>
+                <input type="number" id="initialPosition" class="form-control" value="50">
+            </div>
+            <div class="col">
+                <label for="requestsInput" class="form-label">Solicitudes (separadas por coma):</label>
+                <input type="text" id="requestsInput" class="form-control" value="95,180,34,119,11,123,62,64">
+            </div>
+            <div class="col">
+                <label for="timeUnit" class="form-label">Unidad de tiempo:</label>
+                <input type="number" id="timeUnit" class="form-control" value="1">
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col">
+                <label for="direction" class="form-label">Dirección:</label>
+                <select id="direction" class="form-control">
+                    <option value="ascendente">Ascendente</option>
+                    <option value="descendente">Descendente</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="file" id="fileInput" accept=".txt" class="form-control">
+            </div>
+            <div class="col">
+                <button id="importBtn" class="btn btn-secondary">Importar solicitudes</button>
+            </div>
+        </div>
+        
+        <button id="calculateBtn" class="btn btn-primary mb-3">Calcular y Graficar</button>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id="chart"></canvas>
+            </div>
+            <div class="col-md-6">
+                <table id="resultsTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Algoritmo</th>
+                            <th>Movimiento Total</th>
+                            <th>Movimiento Promedio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="detailsContainer" class="mt-5"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
